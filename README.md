@@ -1,93 +1,159 @@
-# Development
+# Policer Development
+
+[![Docker](https://img.shields.io/static/v1?label=shipped+with&message=Docker&color=287cf9)](https://www.docker.com/)
+[![embrio.tech](https://img.shields.io/static/v1?label=by&message=EMBRIO.tech&color=24ae5f)](https://embrio.tech)
+
+Policer is a access control and authorization solution. This is the development repository to run everything needed for development.
+
+## :books: Table of Contents
+
+- [:spider_web: Architecture](#spider_web-architecture)
+- [:construction_worker: Development](#construction_worker-development)
+- [:bulb: Concepts](#bulb-concepts)
+- [:speech_balloon: Contact](#speech_balloon-contact)
+- [:lock_with_ink_pen: License](#lock_with_ink_pen-license)
+
+## :spider_web: Architecture
+
+<!-- ![app-architecture](docs/img/app-architecture.png) -->
+
+_Figure: Architectural diagram of the application and environment architecture._
+
+### Policer API
+
+#### `api`
+
+[![GitLab Status](https://git.embrio.tech/embrio/policer/api/badges/main/pipeline.svg)](https://git.embrio.tech/embrio/policer/api/pipelines)
+
+The API service of the policer app.
+
+Submodule embrio/policer/api>
+
+<!-- ##### :seedling: Staging
+
+Access staging at https://s.mypolicer.ch
+
+- Start a [EC Support Flow](https://s.mypolicer.ch/consultation?flow=646e2412578910064ddf2661)
+- Start a [Demo Flow](https://s.mypolicer.ch/consultation?flow=64525acc2292ae9a5b09800a) -->
+
+## :construction_worker: Development
+
+### Prerequisites
+
+#### Docker
+
+You need [Docker](https://www.docker.com/products/docker-desktop) :whale: for running the development environment.
+
+#### Visual Studio Code
+
+We strongly recommend you to use the [Visual Studio Code](https://code.visualstudio.com/) editor and IDE.
+
+#### Clone Repository with submodules
+
+You need to clone this repository **with the submodules** by using the `--recurse-submodules` option.
+
+    git clone --recurse-submodules ssh://git@git.embrio.tech:2224/embrio/policer/development.git
+
+##### New Submodules
+
+When new submodules are added or you forgot to use `--recurse-submodules` when cloning, you can execute
+
+    git submodule update --init
+
+to update and initialize the submodules. More on (git submodules)[https://git-scm.com/book/en/v2/Git-Tools-Submodules].
+
+#### Environment Variables
+
+You need to initalize the environment variables. :warning: NEVER commit any secrets to the repository. If you need to store secrets—such as cloud credentials—consider using [`git-secret`](https://github.com/sobolevn/git-secret#readme) to encrypt the `.env` files.
+
+##### Global `.env`
+
+    cp sample.env .env
+
+##### Service specific `.env`
+
+    cp <SERVICE-PATH>/sample.env <SERVICE-PATH>/.env
+
+So, for example:
+
+    cp policer-api/sample.env policer-api/.env
+
+### Run
+
+To run all services execute
+
+    docker compose --profile policer up -d
+
+#### DB Seeding
+
+When the volumes do not exist, DBs are seeded with data by the initialization scripts in `init/...-db/`. To create a new DB seeding dumps check out [Create New DB Dumps](#create-new-db-dumps).
+
+### Inspect
+
+To inspect the logs of a service
+
+    docker compose --profile policer logs -f policer-api
+
+### Access
 
 
 
-## Getting started
+#### `api`
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+:link: http://localhost:5010
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
 
-## Add your files
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+### (Re-)build
 
-```
-cd existing_repo
-git remote add origin https://git.embrio.tech/embrio/policer/development.git
-git branch -M main
-git push -uf origin main
-```
+To rebuild the container images of a service after dependency changes run
 
-## Integrate with your tools
+    docker compose --profile policer build <service-id>
 
-- [ ] [Set up project integrations](https://git.embrio.tech/embrio/policer/development/-/settings/integrations)
+So, for example
 
-## Collaborate with your team
+    docker compose --profile policer build policer-client
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+#### Rebuild everything
 
-## Test and Deploy
+To rebuild everything you can also run
 
-Use the built-in continuous integration in GitLab.
+    docker compose --profile policer up --build
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+### Stop and Cleanup
 
-***
+To clean everything up run
 
-# Editing this README
+    docker compose --profile policer down -v
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+:warning: this also removes the data in the development databases. Don't use `-v` option if you want to keep data.
 
-## Suggestions for a good README
+### Create New DB Dumps
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+Run at least the DB containers with `docker compose up`.
 
-## Name
-Choose a self-explaining name for your project.
+#### `policer-db`
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+To create a new db seed dump, run
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+    docker exec development-policer-db-1 sh -c 'mongodump -d policer --authenticationDatabase admin -u mongodb -p mongodb --archive' > ./init/policer-db/db_init.dump
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+<!-- #### `identity-db`
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+To create a new db dump, run
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+    docker exec development-identity-db-1 sh -c 'pg_dump identity -U postgres' > ./init/identity-db/identity_init -->
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+## :bulb: Concepts
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+tbd
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+## :speech_balloon: Contact
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+[EMBRIO.tech](https://embrio.tech)  
+[hello@embrio.tech](mailto:hello@embrio.tech)  
++41 44 797 59 16
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+## :lock_with_ink_pen: License
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+unlicensed

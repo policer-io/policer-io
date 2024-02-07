@@ -1,0 +1,10 @@
+# .env
+.env*
+
+## Mac finder
+.DS_Store
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
