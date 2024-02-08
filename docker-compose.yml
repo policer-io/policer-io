@@ -1,0 +1,61 @@
+version: '3'
+
+volumes:
+  policer-db:
+  policer-bucket:
+  identity-db:
+  identity-config:
+
+services:
+  policer-db:
+    image: mongo
+    profiles:
+      - policer
+    volumes:
+      - policer-db:/data/db
+      - ./init/policer-db:/docker-entrypoint-initdb.d
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${POLICER_DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${POLICER_DB_PASS}
+      MONGO_INITDB_DATABASE: ${POLICER_DB_NAME}
+
+  # # TODO: uncomment for browser db admin
+  # policer-db-admin:
+  #   image: mongo-express
+  #   profiles:
+  #     - policer
+  #   restart: on-failure
+  #   depends_on:
+  #     - policer-db
+  #   ports:
+  #     - 8020:8081
+  #   environment:
+  #     ME_CONFIG_MONGODB_ADMINUSERNAME: ${POLICER_DB_USER}
+  #     ME_CONFIG_MONGODB_ADMINPASSWORD: ${POLICER_DB_PASS}
+  #     ME_CONFIG_MONGODB_SERVER: policer-db
+
+  policer-api:
+    image: policer-api
+    profiles:
+      - policer
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+      target: install
+    volumes:
+      - ./api:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 5010:5000
+      - 9229:9229
+    depends_on:
+      - policer-db
+    environment:
+      DB_URI: 'mongodb://${POLICER_DB_USER}:${POLICER_DB_PASS}@policer-db:27017/${POLICER_DB_NAME}?authSource=admin'
+      LOGGER_LEVEL: debug
+      PORT: 5000
+      APP_API_KEY: ${APP_API_KEY}
+    tty: true # makes the service logs colorful
+    command: yarn develop:debug
