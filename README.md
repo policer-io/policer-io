@@ -146,7 +146,58 @@ To create a new db dump, run
 
 ## :bulb: Concepts
 
-tbd
+### Data Models
+
+```mermaid
+erDiagram
+    Logic }o--o{ Permission : ""
+
+    Logic {
+        _id ObjectId PK ""
+        name string ""
+        rule LogicRule "JsonLogic Rule"
+        type string "condition | filter | projection"
+        tests unknown[] ""
+        context unknown "? something to validate context data before applying logic"
+    }
+
+    Granting {
+        _id ObjectId PK ""
+        permission ObjectId FK "ref to Permission"
+        recipient ObjectId FK "ref to Role / User / subject / etc."
+    }
+    Granting }o--|| Permission : ""
+    Granting }o--o| Role : ""
+
+    Permission {
+        _id ObjectId PK ""
+        name string "may contain wildcards"
+        condition ObjectId FK "Logic"
+        filter ObjectId FK "Logic"
+        projection ObjectId FK "Logic"
+    }
+
+    Role {
+        _id ObjectId PK ""
+        name string ""
+        inherits ObjectId[] FK "Role[]"
+    }
+
+    Tenant {
+        _id ObjectId PK ""
+        name string "The name of an organization (tenant)"
+    }
+    Tenant ||--o{ Application : ""
+
+    Application {
+        _id ObjectId PK ""
+        name string "The name of an application"
+    }
+    Application ||--o{ Logic : ""
+    Application ||--o{ Role : ""
+    Application ||--o{ Permission : ""
+    Application ||--o{ Granting : ""
+```
 
 ## :speech_balloon: Contact
 
