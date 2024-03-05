@@ -158,16 +158,14 @@ erDiagram
         rule LogicRule "JsonLogic Rule"
         type string "condition | filter | projection"
         tests unknown[] ""
-        context unknown "? something to validate context data before applying logic"
+        attributes unknown "? something to validate attributes/context data before applying logic"
     }
 
     Granting {
         _id ObjectId PK ""
         permission ObjectId FK "ref to Permission"
-        recipient ObjectId FK "ref to Role / User / subject / etc."
+        recipient ObjectId FK "ref to User"
     }
-    Granting }o--|| Permission : ""
-    Granting }o--o| Role : ""
 
     Permission {
         _id ObjectId PK ""
@@ -179,9 +177,13 @@ erDiagram
 
     Role {
         _id ObjectId PK ""
-        name string ""
+        name string PK ""
+        description string ""
+        permissions ObjectId[] FK "Permission[]"
         inherits ObjectId[] FK "Role[]"
     }
+    Role }o--o{ Permission : ""
+    Role }o--o{ Role : "inherits"
 
     Tenant {
         _id ObjectId PK ""
