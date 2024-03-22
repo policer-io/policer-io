@@ -96,13 +96,9 @@ To inspect the logs of a service
 
 ### Access
 
-
-
 #### `api`
 
 :link: http://localhost:5010
-
-
 
 ### (Re-)build
 
@@ -136,7 +132,7 @@ Run at least the DB containers with `docker compose up`.
 
 To create a new db seed dump, run
 
-    docker exec development-policer-db-1 sh -c 'mongodump -d policer --authenticationDatabase admin -u mongodb -p mongodb --archive' > ./init/policer-db/db_init.dump
+    docker exec development-policer-db-1 sh -c 'mongodump -d emt-policer-d --authenticationDatabase admin -u mongodb -p mongodb --archive' > ./init/policer-db/db_init.dump
 
 <!-- #### `identity-db`
 
@@ -199,6 +195,62 @@ erDiagram
     Application ||--o{ Role : ""
     Application ||--o{ Permission : ""
     Application ||--o{ Granting : ""
+```
+
+### JsonLogic
+
+#### Return Object containing dynamic values from JsonLogic
+
+When a `Logic` rule should return an object or array, we can use a custom JsonLogic operation `"json"`. For example
+
+```json
+{
+  "name": "filterPremiumWithoutSubscription",
+  "rule": {
+    "if": [
+      {
+        "var": "userHasSubscription"
+      },
+      {
+        "json": "{}"
+      },
+      {
+        "json": "{ \"premium\": { \"$in\": [{{first}}, {{second}}, {{first}}] } }"
+      }
+    ]
+  },
+  "type": "filter",
+  "application": "65f0674f39d8a1a5ef805ca7"
+}
+```
+
+#### Parse `json` string with custom JsonLogic operation
+
+We can use placeholder with double curly brackets `{{myVariable}}` and parse values into the json string before we parse it.
+
+##### Possible implementation
+
+```javascript
+const json = '{ "premium": { "$in": [{{first}}, {{second}}, {{first}}] } }'
+
+const matches = json.matchAll(/{{(\w+)}}/g)
+
+const data = {
+  first: 23,
+  second: true,
+}
+
+const replaced = matches.reduce((result, match) => {
+  console.log(match)
+  const [matched, group] = match
+  return result.replace(matched, data[group])
+}, json)
+
+console.log(replaced)
+
+const obj = JSON.parse(replaced)
+
+console.log(obj)
 ```
 
 ## :speech_balloon: Contact
