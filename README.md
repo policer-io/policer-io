@@ -13,6 +13,12 @@ Policer is a access control and authorization solution. This is the development 
 - [:speech_balloon: Contact](#speech_balloon-contact)
 - [:lock_with_ink_pen: License](#lock_with_ink_pen-license)
 
+## :clipboard: To Do and Backlog
+
+- [ ] Policy decisions should be logged to maintain an audit trail.
+    - PDP should emit a socket event
+    - Policer API should log these events in DB
+
 ## :spider_web: Architecture
 
 <!-- ![app-architecture](docs/img/app-architecture.png) -->
