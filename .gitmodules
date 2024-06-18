@@ -1,3 +1,0 @@
-[submodule "api"]
-	path = api
-	url = ssh://git@git.embrio.tech:2224/embrio/policer/api.git
