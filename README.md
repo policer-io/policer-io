@@ -18,6 +18,9 @@ Policer is a access control and authorization solution. This is the development 
 - [ ] Policy decisions should be logged to maintain an audit trail.
     - PDP should emit a socket event
     - Policer API should log these events in DB
+- [ ] Validate the required attributes before policy decision.
+- [x] Policy versioning, change log history
+- [ ] Support offline usage, cache policy locally and load it on PDP start if no connection.
 
 ## :spider_web: Architecture
 
