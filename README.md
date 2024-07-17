@@ -4,6 +4,8 @@
 
 An intuitive open source authorization and access control platform for software applications and microservices.
 
+<img width="903" alt="permission-example-lg" src="https://github.com/user-attachments/assets/31e63e67-1a83-463a-b9c5-a0b9b979c3c5">
+
 [Learn more!](https://policer.io)
 
 ##
