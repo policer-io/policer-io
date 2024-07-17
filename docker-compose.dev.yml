@@ -3,8 +3,6 @@ version: '3'
 volumes:
   policer-db:
   policer-bucket:
-  identity-db:
-  identity-config:
 
 services:
   policer-db:
@@ -13,7 +11,7 @@ services:
       - policer
     volumes:
       - policer-db:/data/db
-      - ./init/policer-db:/docker-entrypoint-initdb.d
+      - ./seeds/policer-db:/docker-entrypoint-initdb.d
     ports:
       - 27017:27017
     environment:
