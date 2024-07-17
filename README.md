@@ -4,8 +4,8 @@
 
 An intuitive open source authorization and access control SDK for software applications and microservices.
 
+[![policer.io](https://img.shields.io/static/v1?label=🔗&message=policer.io&color=DE2A42)](https://policer.io)
 [![embrio.tech](https://img.shields.io/static/v1?label=🚀+by&message=EMBRIO.tech&color=24ae5f)](https://embrio.tech)
-[![policer.io](https://img.shields.io/static/v1?label=🔗&message=Docker&color=287cf9)](https://www.docker.com/)
 
 ## :gem: Key Benefits
 
