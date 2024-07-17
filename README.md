@@ -270,4 +270,4 @@ console.log(obj)
 
 ## :lock_with_ink_pen: License
 
-unlicensed
+The code is licensed under the [AGPLv3](/LICENSE) License.
