@@ -31,7 +31,7 @@ _Figure: Architectural diagram of the application and environment architecture._
 
 #### `api`
 
-[![GitLab Status](https://git.embrio.tech/embrio/policer/api/badges/main/pipeline.svg)](https://git.embrio.tech/embrio/policer/api/pipelines)
+[![Pipeline](https://github.com/policer-io/api/actions/workflows/test.yml/badge.svg)](https://github.com/policer-io/api/actions/workflows/test.yml)
 
 The API service of the policer app.
 
@@ -60,7 +60,7 @@ We strongly recommend you to use the [Visual Studio Code](https://code.visualstu
 
 You need to clone this repository **with the submodules** by using the `--recurse-submodules` option.
 
-    git clone --recurse-submodules ssh://git@git.embrio.tech:2224/embrio/policer/development.git
+    git clone --recurse-submodules git@github.com:policer-io/policer-io.git
 
 ##### New Submodules
 
