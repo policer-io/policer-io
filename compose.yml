@@ -2,7 +2,6 @@ version: '3'
 
 volumes:
   policer-db:
-  policer-bucket:
 
 services:
   policer-db:
