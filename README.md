@@ -1,17 +1,23 @@
-![logo-light-long-2](https://github.com/policer-io/.github/assets/16650977/c39ad4a3-7a5c-40b6-9a69-5be3a3c50255)
+[![logo-light-long-2](https://github.com/policer-io/.github/assets/16650977/c39ad4a3-7a5c-40b6-9a69-5be3a3c50255)](https://policer.io)
 
 # Developer Friendly Access Control with Policy as JSON
 
-An intuitive open source authorization and access control platform for software applications and microservices.
+An intuitive open source authorization and access control SDK for software applications and microservices.
+
+[![embrio.tech](https://img.shields.io/static/v1?label=🚀+by&message=EMBRIO.tech&color=24ae5f)](https://embrio.tech)
+[![policer.io](https://img.shields.io/static/v1?label=🔗&message=Docker&color=287cf9)](https://www.docker.com/)
+
+## :gem: Key Benefits
+
+- **Simplified Security:** Remove access control headaches from your application code.
+- **Policy as Data:** Define permissions with intuitive and maintainable JSON syntax.
+- **Clean Code:** Evaluate permissions and grant access with just one line of code.
+- **Fine-Grained Permissions:** Modify database query filters and hide, show, or set data properties.
+- **Popular models:** Manage user access with powerful and widely accepted RBAC and ABAC models.
+
+[Learn more](https://policer.io/#features) about the benefits and features of policer.io!
 
 <img width="903" alt="permission-example-lg" src="https://github.com/user-attachments/assets/31e63e67-1a83-463a-b9c5-a0b9b979c3c5">
-
-[Learn more!](https://policer.io)
-
-##
-
-[![Docker](https://img.shields.io/static/v1?label=📦+with&message=Docker&color=287cf9)](https://www.docker.com/)
-[![embrio.tech](https://img.shields.io/static/v1?label=🚀+by&message=EMBRIO.tech&color=24ae5f)](https://embrio.tech)
 
 ## :books: Table of Contents
 
@@ -27,15 +33,23 @@ An intuitive open source authorization and access control platform for software 
 
 _Figure: Architectural diagram of the application and environment architecture._
 
-### Policer API
+### Policy Decision Point (PDP)
 
-#### `api`
+Evaluate permissions in your app to grant or deny access with just one line of code in the programming language of your choice.
+
+#### Client Library [`@policer-io/pdp-ts`](https://github.com/policer-io/pdp-ts)
+
+The client library for typescript and javascript projects
+
+[:book: Read the docs!](https://github.com/policer-io/pdp-ts)
+
+### Policy Center
+
+#### Submodule [`policer-io/api`](https://github.com/policer-io/api)
+
+Manage, test and store your your permissions and access control logic with JSON, independent of your app's code, at a central place.
 
 [![Pipeline](https://github.com/policer-io/api/actions/workflows/test.yml/badge.svg)](https://github.com/policer-io/api/actions/workflows/test.yml)
-
-The API service of the policer app.
-
-Submodule embrio/policer/api>
 
 <!-- ##### :seedling: Staging
 
@@ -43,6 +57,14 @@ Access staging at https://s.mypolicer.ch
 
 - Start a [EC Support Flow](https://s.mypolicer.ch/consultation?flow=646e2412578910064ddf2661)
 - Start a [Demo Flow](https://s.mypolicer.ch/consultation?flow=64525acc2292ae9a5b09800a) -->
+
+### Policy Editor UI
+
+Empower non-engineering team members to manage and implement permissions with a non-code user interface.
+
+#### Submodule [`policer-io/client`](https://github.com/policer-io/client)
+
+Coming soon... :construction:
 
 ## :construction_worker: Development
 
@@ -272,9 +294,8 @@ The code is licensed under the [AGPLv3](/LICENSE) License.
 ## :clipboard: To Do and Backlog
 
 - [ ] Policy decisions should be logged to maintain an audit trail.
-    - PDP should emit a socket event
-    - Policer API should log these events in DB
+  - PDP should emit a socket event
+  - Policer API should log these events in DB
 - [ ] Validate the required attributes before policy decision.
 - [x] Policy versioning, change log history
 - [ ] Support offline usage, cache policy locally and load it on PDP start if no connection.
-
