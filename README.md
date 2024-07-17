@@ -21,18 +21,9 @@ An intuitive open source authorization and access control platform for software 
 - [:speech_balloon: Contact](#speech_balloon-contact)
 - [:lock_with_ink_pen: License](#lock_with_ink_pen-license)
 
-## :clipboard: To Do and Backlog
-
-- [ ] Policy decisions should be logged to maintain an audit trail.
-    - PDP should emit a socket event
-    - Policer API should log these events in DB
-- [ ] Validate the required attributes before policy decision.
-- [x] Policy versioning, change log history
-- [ ] Support offline usage, cache policy locally and load it on PDP start if no connection.
-
 ## :spider_web: Architecture
 
-<!-- ![app-architecture](docs/img/app-architecture.png) -->
+![app-architecture](https://github.com/user-attachments/assets/eeaf7b92-aea1-42fb-891c-4731acfdd651)
 
 _Figure: Architectural diagram of the application and environment architecture._
 
@@ -272,10 +263,18 @@ console.log(obj)
 
 ## :speech_balloon: Contact
 
-[EMBRIO.tech](https://embrio.tech)  
-[hello@embrio.tech](mailto:hello@embrio.tech)  
-+41 44 797 59 16
+Talk to us via [policer.io](https://policer.io/contact/)
 
 ## :lock_with_ink_pen: License
 
 The code is licensed under the [AGPLv3](/LICENSE) License.
+
+## :clipboard: To Do and Backlog
+
+- [ ] Policy decisions should be logged to maintain an audit trail.
+    - PDP should emit a socket event
+    - Policer API should log these events in DB
+- [ ] Validate the required attributes before policy decision.
+- [x] Policy versioning, change log history
+- [ ] Support offline usage, cache policy locally and load it on PDP start if no connection.
+
