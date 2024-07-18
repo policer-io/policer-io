@@ -7,6 +7,12 @@ An intuitive open source authorization and access control SDK for software appli
 [![policer.io](https://img.shields.io/static/v1?label=🔗&message=policer.io&color=DE2A42)](https://policer.io)
 [![embrio.tech](https://img.shields.io/static/v1?label=🚀+by&message=EMBRIO.tech&color=24ae5f)](https://embrio.tech)
 
+## :star: Stargaze us!
+
+### Support the project by giving it a GitHub Star!
+
+![GitHub Repo stars](https://img.shields.io/github/stars/policer-io/policer-io?label=GitHub%20%E2%AD%90%EF%B8%8F)
+
 ## :gem: Key Benefits
 
 - **Simplified Security:** Remove access control headaches from your application code.
@@ -18,6 +24,12 @@ An intuitive open source authorization and access control SDK for software appli
 [Learn more](https://policer.io/#features) about the benefits and features of policer.io!
 
 <img width="903" alt="permission-example-lg" src="https://github.com/user-attachments/assets/31e63e67-1a83-463a-b9c5-a0b9b979c3c5">
+
+## :electric_plug: Get Started
+
+:soon: Instructions coming soon. [Talk to us](https://policer.io/contact/) if you don't want to wait.
+
+Meanwhile check out the [client library instructions](https://github.com/policer-io/pdp-ts) to learn more on how it works.
 
 ## :books: Table of Contents
 

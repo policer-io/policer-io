@@ -4,7 +4,7 @@ volumes:
   policer-db:
 
 services:
-  policer-db:
+  db:
     image: mongo
     profiles:
       - policer
@@ -33,7 +33,7 @@ services:
   #     ME_CONFIG_MONGODB_ADMINPASSWORD: ${POLICER_DB_PASS}
   #     ME_CONFIG_MONGODB_SERVER: policer-db
 
-  policer-api:
+  api:
     image: policer-api
     profiles:
       - policer
@@ -48,7 +48,7 @@ services:
       - 5010:5000
       - 9229:9229
     depends_on:
-      - policer-db
+      - db
     environment:
       DB_URI: 'mongodb://${POLICER_DB_USER}:${POLICER_DB_PASS}@policer-db:27017/${POLICER_DB_NAME}?authSource=admin'
       LOGGER_LEVEL: debug
