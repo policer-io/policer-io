@@ -7,7 +7,7 @@ An intuitive open source authorization and access control SDK for software appli
 [![policer.io](https://img.shields.io/static/v1?label=🔗&message=policer.io&color=DE2A42)](https://policer.io)
 [![embrio.tech](https://img.shields.io/static/v1?label=🚀+by&message=EMBRIO.tech&color=24ae5f)](https://embrio.tech)
 
-## :star: Stargaze us!
+## :star: Give us a Star!
 
 ### Support the project by giving it a GitHub Star!
 
