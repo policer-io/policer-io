@@ -11,7 +11,7 @@ An intuitive open source authorization and access control SDK for software appli
 
 ### Support the project by giving it a GitHub Star!
 
-![GitHub Repo stars](https://img.shields.io/github/stars/policer-io/policer-io?label=GitHub%20%E2%AD%90%EF%B8%8F)
+[![GitHub Repo stars](https://img.shields.io/github/stars/policer-io/policer-io?label=GitHub%20%E2%AD%90%EF%B8%8F)](https://github.com/policer-io/policer-io)
 
 ## :gem: Key Benefits
 
