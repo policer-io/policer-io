@@ -50,9 +50,10 @@ services:
     depends_on:
       - db
     environment:
-      DB_URI: 'mongodb://${POLICER_DB_USER}:${POLICER_DB_PASS}@policer-db:27017/${POLICER_DB_NAME}?authSource=admin'
+      DB_URI: 'mongodb://${POLICER_DB_USER}:${POLICER_DB_PASS}@db:27017/${POLICER_DB_NAME}?authSource=admin'
       LOGGER_LEVEL: debug
       PORT: 5000
       APP_API_KEY: ${APP_API_KEY}
+      CORS_REGEX: '^http:\/\/localhost'
     tty: true # makes the service logs colorful
     command: yarn develop:debug
