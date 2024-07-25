@@ -1,10 +1,10 @@
-[![logo-light-long-2](https://github.com/policer-io/.github/assets/16650977/c39ad4a3-7a5c-40b6-9a69-5be3a3c50255)](https://policer.io)
+[![logo-light-long-2](https://github.com/policer-io/.github/assets/16650977/c39ad4a3-7a5c-40b6-9a69-5be3a3c50255)](https://policer.io?utm_source=github)
 
 # Developer Friendly Access Control with Policy as JSON
 
 An intuitive open source authorization and access control SDK for software applications and microservices.
 
-[![policer.io](https://img.shields.io/static/v1?label=🔗&message=policer.io&color=DE2A42)](https://policer.io)
+[![policer.io](https://img.shields.io/static/v1?label=🔗&message=policer.io&color=DE2A42)](https://policer.io?utm_source=github)
 [![embrio.tech](https://img.shields.io/static/v1?label=🚀+by&message=EMBRIO.tech&color=24ae5f)](https://embrio.tech)
 
 ## :star: Give us a Star!
@@ -21,13 +21,13 @@ An intuitive open source authorization and access control SDK for software appli
 - **Fine-Grained Permissions:** Modify database query filters and hide, show, or set data properties.
 - **Popular models:** Manage user access with powerful and widely accepted RBAC and ABAC models.
 
-[Learn more](https://policer.io/#features) about the benefits and features of policer.io!
+[Learn more](https://policer.io/#features?utm_source=github) about the benefits and features of policer.io!
 
 <img width="903" alt="permission-example-lg" src="https://github.com/user-attachments/assets/31e63e67-1a83-463a-b9c5-a0b9b979c3c5">
 
 ## :electric_plug: Get Started
 
-:soon: Instructions coming soon. [Talk to us](https://policer.io/contact/) if you don't want to wait.
+:soon: Instructions coming soon. [Talk to us](https://policer.io/contact/?utm_source=github) if you don't want to wait.
 
 Meanwhile check out the [client library instructions](https://github.com/policer-io/pdp-ts) to learn more on how it works.
 
@@ -297,7 +297,7 @@ console.log(obj)
 
 ## :speech_balloon: Contact
 
-Talk to us via [policer.io](https://policer.io/contact/)
+Talk to us via [policer.io](https://policer.io/contact/?utm_source=github)
 
 ## :lock_with_ink_pen: License
 
